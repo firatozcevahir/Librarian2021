@@ -123,13 +123,13 @@ namespace Librarian2021.Web
                 }
             }
 
-            //app.UseSpa(spa =>
-            //{
-            //    if (env.IsDevelopment())
-            //    {
-            //        spa.UseProxyToSpaDevelopmentServer(Configuration.GetSection("app:spaDevelopmentServer").Value);
-            //    }
-            //});
+            app.UseSpa(spa =>
+            {
+                if (env.IsDevelopment())
+                {
+                    spa.UseProxyToSpaDevelopmentServer(Configuration.GetSection("app:spaDevelopmentServer").Value);
+                }
+            });
         }
     }
 }

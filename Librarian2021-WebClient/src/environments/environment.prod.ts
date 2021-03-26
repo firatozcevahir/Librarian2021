@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  api: location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')
 };

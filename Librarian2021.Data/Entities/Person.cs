@@ -18,6 +18,7 @@ namespace Librarian2021.Data.Entities
         public string LastName { get; set; }
 
         public string Address { get; set; }
+
         [Required]
         [Column(TypeName = "varchar")]
         [MaxLength(64)]

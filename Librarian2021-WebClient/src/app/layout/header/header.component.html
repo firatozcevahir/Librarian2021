@@ -1,0 +1,41 @@
+<mat-toolbar>
+  <span>{{'SYSTEM.APP_NAME' | translate}}</span>
+
+  <div fxLayout="row" fxLayoutAlign="end end">
+    <ul fxLayout="row" fxLayoutGap="20px">
+      <li>
+        <button mat-button [color]="isActive('/book') ? 'primary': ''" routerLink="/book">
+          <mat-icon>book</mat-icon> Books
+        </button>
+      </li>
+      <li>
+        <button mat-button [color]="isActive('/author') ? 'primary': ''" routerLink="/author">
+          <mat-icon>local_library</mat-icon> Authors
+        </button>
+      </li>
+      <li>
+        <button mat-button [color]="isActive('/person') ? 'primary': ''" routerLink="/person">
+          <mat-icon>person</mat-icon> People
+        </button>
+      </li>
+    </ul>
+  </div>
+  <span class="spacer"></span>
+  <div fxLayout="row" fxLayoutAlign="end end">
+    <ul fxLayout="row" fxLayoutGap="20px">
+      <li>
+        <button mat-button [matMenuTriggerFor]="lang">
+          <mat-icon>language</mat-icon>
+        </button>
+        <mat-menu #lang="matMenu">
+          <button mat-menu-item (click)="setLanguage('en')">
+            {{'SYSTEM.LANGUAGES.EN' | translate}}
+          </button>
+          <button mat-menu-item (click)="setLanguage('tr')">
+            {{'SYSTEM.LANGUAGES.TR' | translate}}
+          </button>
+        </mat-menu>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>
