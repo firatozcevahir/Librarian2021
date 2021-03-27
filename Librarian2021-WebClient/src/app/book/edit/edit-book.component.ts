@@ -28,7 +28,7 @@ export class EditBookComponent implements OnInit, OnDestroy {
   public authorList: IAuthorModel[] = [];
 
   private subs = new SubSink();
-  private data: IEditDialogModel;
+  public data: IEditDialogModel;
 
   constructor(
     public dialogRef: MatDialogRef<EditBookComponent>,

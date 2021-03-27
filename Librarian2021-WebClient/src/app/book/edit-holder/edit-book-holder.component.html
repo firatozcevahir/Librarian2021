@@ -1,21 +1,10 @@
-<mat-dialog-content>
+<app-dialog-widget [title]="'BOOK.EDIT_HOLDER'">
+
 
   <form class="main-form" [formGroup]="dataFRM" novalidate autocomplete="off">
 
     <mat-card>
       <mat-card-content>
-
-
-        <!-- <mat-form-field appearance="outline">
-          <mat-label>{{'BOOK.FIELDS.HOLDER'|translate}}</mat-label>
-          <mat-select formControlName="authorId" id="authorId">
-            <mat-option *ngFor="let item of personList" [value]="item.id">
-              {{item.name}} {{item.lastName}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <br /> -->
-
         <ng-select [items]="personList" bindLabel="name" bindValue="id" formControlName="personId" [multiple]="false"
           placeholder="{{'BOOK.FIELDS.HOLDER'|translate}}" [searchable]="true" [virtualScroll]="true"
           [clearable]="true"
@@ -55,4 +44,4 @@
       </mat-card-actions>
     </mat-card>
   </form>
-</mat-dialog-content>
+  </app-dialog-widget>

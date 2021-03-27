@@ -6,11 +6,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@app/material.module';
 import { MatIconModule } from '@angular/material/icon';
 import { TimeAgoPipe } from './pipes/index';
+import { TooltipComponent } from './components/tooltip/tooltip.component';
+import { DialogWidgetComponent } from './components/dialog-widget/dialog-widget.component';
 
 
 @NgModule({
   declarations: [
-    TimeAgoPipe
+    TimeAgoPipe,
+    TooltipComponent,
+    DialogWidgetComponent
   ],
 
   imports: [
@@ -27,7 +31,9 @@ import { TimeAgoPipe } from './pipes/index';
     TranslateModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TooltipComponent,
+    DialogWidgetComponent
   ],
   providers: []
 })

@@ -11,6 +11,7 @@ const routes: Routes = [
   {
     path: 'person', loadChildren: () => import('@app/person/person.module').then((m) => m.PersonModule)
   },
+  { path: '**', redirectTo: 'book' },
 ];
 
 @NgModule({

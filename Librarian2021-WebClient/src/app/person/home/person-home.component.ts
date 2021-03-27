@@ -14,6 +14,7 @@ import { SubSink } from '@app/shared/subsink';
 import { CustomEventService } from '@app/shared/services/custom-event.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditPersonComponent } from '@app/person/edit/edit-person.component';
+import { IBookModel } from '@app/shared/models/book.model';
 
 @Component({
   selector: 'app-person-home',
@@ -89,5 +90,14 @@ export class PersonHomeComponent implements OnInit, OnDestroy {
       .afterClosed()
       .subscribe((result) => {
       });
+  }
+
+  public getBookNames(books: IBookModel[]): string {
+
+    if(!books){
+      return '';
+    }
+
+    return books.map((i) => i.title).join(', ');
   }
 }

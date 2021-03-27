@@ -119,7 +119,7 @@ namespace Librarian2021.Web
                 var result = DbInitializer.SeedData(services);
                 if (!result)
                 {
-                    // db failed to initialize
+                    // db failed to seed data
                 }
             }
 

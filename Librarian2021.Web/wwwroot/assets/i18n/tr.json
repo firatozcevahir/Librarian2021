@@ -16,12 +16,9 @@
         "TITLE_REQUIRED": "Title is required",
         "GENRE_REQUIRED": "Genre is required",
         "LENGTH_MAX": "Not more than {{length}} characters long.",
-        "LENGTH_MIN": "You must enter at least {{length}} characters."
+        "LENGTH_MIN": "You must enter at least {{length}} characters.",
+        "MORE_THAN_LENGTH": "You have more than {{length}} characters."
       }
-    },
-    "LANGUAGES": {
-      "EN": "English",
-      "TR": "Turkish"
     }
   },
   "TIME_AGO": {
@@ -39,15 +36,12 @@
   },
   "BOOK": {
     "MENU": "Books",
-    "EDIT":"Edit Book",
-    "EDIT_HOLDER":"Edit Book Holder",
-    "ADD":"Add Book",
     "FIELDS": {
       "TITLE": "Title",
       "AUTHOR": "Author",
       "PUBLISH_YEAR": "Publish Year",
       "GENRE": "Genre",
-      "IS_OCCUPIED": "Occupied By",
+      "IS_OCCUPIED": "Occupied",
       "PERSON": "Person",
       "START_DATE": "Start Date",
       "END_DATE": "End Date",
@@ -57,8 +51,6 @@
   },
   "PERSON": {
     "MENU": "People",
-    "EDIT":"Edit Person",
-    "ADD":"Add Person",
     "FIELDS": {
       "NAME": "Name",
       "LAST_NAME": "Last Name",
@@ -70,8 +62,6 @@
   },
   "AUTHOR": {
     "MENU": "Authors",
-    "EDIT":"Edit Author",
-    "ADD":"Add Author",
     "FIELDS": {
       "NAME": "Name",
       "LAST_NAME": "Last Name",

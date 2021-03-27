@@ -1,4 +1,4 @@
-<mat-dialog-content>
+<app-dialog-widget [title]="data.editMode ? 'BOOK.EDIT' : 'BOOK.ADD'">
 
   <form class="main-form" [formGroup]="dataFRM" novalidate autocomplete="off">
 
@@ -60,4 +60,4 @@
       </mat-card-actions>
     </mat-card>
   </form>
-</mat-dialog-content>
+  </app-dialog-widget>

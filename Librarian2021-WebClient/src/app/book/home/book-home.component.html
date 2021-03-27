@@ -4,7 +4,8 @@
 <mat-table #table [dataSource]="dataSource" matSort>
 
   <ng-container matColumnDef="title">
-    <mat-header-cell *matHeaderCellDef>{{'BOOK.FIELDS.TITLE'|translate}}
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{'BOOK.FIELDS.TITLE'|translate}}
     </mat-header-cell>
     <mat-cell *matCellDef="let data">
       {{data.title}}
@@ -13,7 +14,8 @@
   </ng-container>
 
   <ng-container matColumnDef="author">
-    <mat-header-cell *matHeaderCellDef>{{'BOOK.FIELDS.AUTHOR'|translate}}
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{'BOOK.FIELDS.AUTHOR'|translate}}
     </mat-header-cell>
     <mat-cell *matCellDef="let data">
       {{data.author.name}} {{data.author.lastName}}
@@ -21,7 +23,8 @@
   </ng-container>
 
   <ng-container matColumnDef="occupied">
-    <mat-header-cell *matHeaderCellDef>{{'BOOK.FIELDS.IS_OCCUPIED'|translate}}
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{'BOOK.FIELDS.IS_OCCUPIED'|translate}}
     </mat-header-cell>
     <mat-cell *matCellDef="let data">
       <ng-container *ngIf="data.person">

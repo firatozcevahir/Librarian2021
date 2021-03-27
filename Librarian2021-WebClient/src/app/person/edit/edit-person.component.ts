@@ -27,7 +27,7 @@ export class EditPersonComponent implements OnInit, OnDestroy {
   public isRequesting = false;
 
   private subs = new SubSink();
-  private data: IEditDialogModel;
+  public data: IEditDialogModel;
 
   constructor(
     public dialogRef: MatDialogRef<EditPersonComponent>,

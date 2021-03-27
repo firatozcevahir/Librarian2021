@@ -1,4 +1,4 @@
-<mat-dialog-content>
+<app-dialog-widget [title]="data.editMode ? 'PERSON.EDIT' : 'PERSON.ADD'">
 
   <form class="main-form" [formGroup]="dataFRM" novalidate autocomplete="off">
 
@@ -58,4 +58,5 @@
       </mat-card-actions>
     </mat-card>
   </form>
-</mat-dialog-content>
+
+</app-dialog-widget>
