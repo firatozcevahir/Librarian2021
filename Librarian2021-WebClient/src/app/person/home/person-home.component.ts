@@ -26,7 +26,7 @@ export class PersonHomeComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  public dataSource!: MatTableDataSource<IPersonModel>;
+  public dataSource = new MatTableDataSource<IPersonModel>();
 
   public isRequesting = false;
   public displayedColumns: string[] = ['name', 'phoneNumber', 'address', 'books', 'recordState', 'updatedAt', 'id'];
@@ -34,6 +34,7 @@ export class PersonHomeComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
 
   public personList: IPersonModel[] = [];
+  public searchTerm = '';
 
   constructor(
     private dataService: DataService,
@@ -47,7 +48,12 @@ export class PersonHomeComponent implements OnInit, OnDestroy {
     this.subs.add(
       this.customEventService
         .on('person-updated')
-        .subscribe(() => this.loadData())
+        .subscribe(() => this.loadData()),
+
+      this.dataService.broadcastSearchTerms.subscribe(data => {
+        this.searchTerm = data;
+        this.applyFilter();
+      })
     );
   }
 
@@ -66,7 +72,7 @@ export class PersonHomeComponent implements OnInit, OnDestroy {
         )
         .subscribe((response: IPersonModel[]) => {
           this.personList = response;
-          this.dataSource = new MatTableDataSource<IPersonModel>(this.personList);
+          this.dataSource.data = this.personList;
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;
           console.log(this.personList);
@@ -93,11 +99,13 @@ export class PersonHomeComponent implements OnInit, OnDestroy {
   }
 
   public getBookNames(books: IBookModel[]): string {
-
     if(!books){
       return '';
     }
-
     return books.map((i) => i.title).join(', ');
+  }
+
+  public applyFilter(): void {
+    this.dataSource.filter = this.searchTerm.trim().toLowerCase();
   }
 }

@@ -18,6 +18,9 @@ import { BaseService } from '@app/shared/services/base.service';
 
 export class DataService extends BaseService {
 
+  public globalSearchTerms: BehaviorSubject<string> = new BehaviorSubject('');
+  public broadcastSearchTerms = this.globalSearchTerms.asObservable();
+
   constructor(
     private http: HttpClient,
     private translateService: TranslateService,

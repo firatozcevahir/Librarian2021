@@ -14,6 +14,7 @@ import { SubSink } from '@app/shared/subsink';
 import { CustomEventService } from '@app/shared/services/custom-event.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditAuthorComponent } from '@app/author/edit/edit-author.component';
+import { IBookModel } from '@app/shared/models/book.model';
 
 @Component({
   selector: 'app-author-home',
@@ -25,7 +26,7 @@ export class AuthorHomeComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  public dataSource!: MatTableDataSource<IAuthorModel>;
+  public dataSource = new MatTableDataSource<IAuthorModel>();
 
   public isRequesting = false;
   public displayedColumns: string[] = ['name', 'books', 'recordState', 'updatedAt', 'id'];
@@ -33,6 +34,7 @@ export class AuthorHomeComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
 
   public authorList: IAuthorModel[] = [];
+  public searchTerm = '';
 
   constructor(
     private dataService: DataService,
@@ -46,7 +48,12 @@ export class AuthorHomeComponent implements OnInit, OnDestroy {
     this.subs.add(
       this.customEventService
         .on('author-updated')
-        .subscribe(() => this.loadData())
+        .subscribe(() => this.loadData()),
+
+      this.dataService.broadcastSearchTerms.subscribe(data => {
+        this.searchTerm = data;
+        this.applyFilter();
+      })
     );
   }
 
@@ -65,7 +72,7 @@ export class AuthorHomeComponent implements OnInit, OnDestroy {
         )
         .subscribe((response: IAuthorModel[]) => {
           this.authorList = response;
-          this.dataSource = new MatTableDataSource<IAuthorModel>(this.authorList);
+          this.dataSource.data = this.authorList;
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;
           console.log(this.authorList);
@@ -74,7 +81,6 @@ export class AuthorHomeComponent implements OnInit, OnDestroy {
         })
     );
   }
-
 
   public editAuthor(id?: string, edit = false): void {
     const dialogConfig = new MatDialogConfig();
@@ -89,5 +95,16 @@ export class AuthorHomeComponent implements OnInit, OnDestroy {
       .afterClosed()
       .subscribe((result) => {
       });
+  }
+
+  public getBookNames(books: IBookModel[]): string {
+    if(!books){
+      return '';
+    }
+    return books.map((i) => i.title).join(', ');
+  }
+
+  public applyFilter(): void {
+    this.dataSource.filter = this.searchTerm.trim().toLowerCase();
   }
 }

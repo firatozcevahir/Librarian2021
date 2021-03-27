@@ -1,6 +1,6 @@
 <mat-progress-bar mode="query" *ngIf="isRequesting"></mat-progress-bar>
 
-
+<app-search-bar></app-search-bar>
 <mat-table #table [dataSource]="dataSource" matSort>
 
   <ng-container matColumnDef="name">
@@ -16,6 +16,7 @@
     </mat-header-cell>
     <mat-cell *matCellDef="let data">
       {{data.books.length}}
+      <app-tooltip *ngIf="data.books.length" [msg]="getBookNames(data.books)"></app-tooltip>
     </mat-cell>
   </ng-container>
 

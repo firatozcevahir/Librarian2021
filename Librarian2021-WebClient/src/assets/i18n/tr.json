@@ -9,6 +9,7 @@
       "RECORD_STATE": "Durum",
       "SAVE": "Kaydet",
       "CANCEL": "İptal",
+      "SEARCH": "Ara",
       "VALIDATION": {
         "NAME_REQUIRED": "Ad Gerekli",
         "LAST_NAME_REQUIRED": "Soyad Gerekli",
@@ -40,7 +41,7 @@
   "BOOK": {
     "MENU": "Kitaplar",
     "EDIT": "Kitabı Düzenle",
-    "EDIT_HOLDER":"Kitabı Alanı Düzenle",
+    "EDIT_HOLDER": "Kitabı Alanı Düzenle",
     "ADD": "Kitap Ekle",
     "FIELDS": {
       "TITLE": "Başlık",

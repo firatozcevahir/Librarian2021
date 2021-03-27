@@ -26,7 +26,7 @@ export class BookHomeComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  public dataSource!: MatTableDataSource<IBookModel>;
+  public dataSource = new MatTableDataSource<IBookModel>();
 
   public isRequesting = false;
   public displayedColumns: string[] = ['title', 'author', 'occupied', 'person', 'recordState', 'updatedAt', 'id'];
@@ -36,6 +36,7 @@ export class BookHomeComponent implements OnInit, OnDestroy {
   public bookList: IBookModel[] = [];
 
   public date = new Date();
+  public searchTerm = '';
 
   constructor(
     private dataService: DataService,
@@ -49,7 +50,12 @@ export class BookHomeComponent implements OnInit, OnDestroy {
     this.subs.add(
       this.customEventService
         .on('book-updated')
-        .subscribe(() => this.loadData())
+        .subscribe(() => this.loadData()),
+
+      this.dataService.broadcastSearchTerms.subscribe(data => {
+        this.searchTerm = data;
+        this.applyFilter();
+      })
     );
   }
 
@@ -68,7 +74,7 @@ export class BookHomeComponent implements OnInit, OnDestroy {
         )
         .subscribe((response: IBookModel[]) => {
           this.bookList = response;
-          this.dataSource = new MatTableDataSource<IBookModel>(this.bookList);
+          this.dataSource.data = this.bookList;
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;
           console.log(this.bookList);
@@ -111,6 +117,10 @@ export class BookHomeComponent implements OnInit, OnDestroy {
 
   public checkIfDateOver(endDate: string): string {
     return new Date(endDate) < this.date ? 'over-time' : '';
+  }
+
+  public applyFilter(): void {
+    this.dataSource.filter = this.searchTerm.trim().toLowerCase();
   }
 
 }

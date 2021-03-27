@@ -9,6 +9,7 @@
       "RECORD_STATE": "Record State",
       "SAVE": "Save",
       "CANCEL": "Cancel",
+      "SEARCH": "Search",
       "VALIDATION": {
         "NAME_REQUIRED": "Name is required",
         "LAST_NAME_REQUIRED": "Last Name is required",
@@ -39,9 +40,9 @@
   },
   "BOOK": {
     "MENU": "Books",
-    "EDIT":"Edit Book",
-    "EDIT_HOLDER":"Edit Book Holder",
-    "ADD":"Add Book",
+    "EDIT": "Edit Book",
+    "EDIT_HOLDER": "Edit Book Holder",
+    "ADD": "Add Book",
     "FIELDS": {
       "TITLE": "Title",
       "AUTHOR": "Author",
@@ -57,8 +58,8 @@
   },
   "PERSON": {
     "MENU": "People",
-    "EDIT":"Edit Person",
-    "ADD":"Add Person",
+    "EDIT": "Edit Person",
+    "ADD": "Add Person",
     "FIELDS": {
       "NAME": "Name",
       "LAST_NAME": "Last Name",
@@ -70,8 +71,8 @@
   },
   "AUTHOR": {
     "MENU": "Authors",
-    "EDIT":"Edit Author",
-    "ADD":"Add Author",
+    "EDIT": "Edit Author",
+    "ADD": "Add Author",
     "FIELDS": {
       "NAME": "Name",
       "LAST_NAME": "Last Name",

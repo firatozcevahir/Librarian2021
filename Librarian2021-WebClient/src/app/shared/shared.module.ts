@@ -8,13 +8,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { TimeAgoPipe } from './pipes/index';
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { DialogWidgetComponent } from './components/dialog-widget/dialog-widget.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 
 @NgModule({
   declarations: [
     TimeAgoPipe,
     TooltipComponent,
-    DialogWidgetComponent
+    DialogWidgetComponent,
+    SearchBarComponent
   ],
 
   imports: [
@@ -33,7 +35,8 @@ import { DialogWidgetComponent } from './components/dialog-widget/dialog-widget.
     FormsModule,
     ReactiveFormsModule,
     TooltipComponent,
-    DialogWidgetComponent
+    DialogWidgetComponent,
+    SearchBarComponent
   ],
   providers: []
 })

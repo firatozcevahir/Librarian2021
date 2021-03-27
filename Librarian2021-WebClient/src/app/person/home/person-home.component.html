@@ -1,6 +1,7 @@
 <mat-progress-bar mode="query" *ngIf="isRequesting"></mat-progress-bar>
 
 
+<app-search-bar></app-search-bar>
 <mat-table #table [dataSource]="dataSource" matSort>
 
   <ng-container matColumnDef="name">

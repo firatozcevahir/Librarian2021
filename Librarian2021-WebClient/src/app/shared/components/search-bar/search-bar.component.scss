@@ -1,0 +1,47 @@
+// Search Bar
+.content {
+  width: 100%;
+  /* max-width: 512px !important; */
+
+  .search {
+    height: 48px;
+    padding: 12px;
+    width: 100%;
+    background: #fff;
+    border-radius: 0;
+    border-bottom: 1px solid #ddd;
+    color: #000;
+    input {
+      padding: 0 0 0 16px;
+    }
+    fa-icon {
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .back-link {
+    font-size: 15px;
+    text-align: center;
+  }
+  input {
+    border: none;
+    outline: none;
+  }
+}
+
+// .mat-input-element {
+//   font: inherit;
+//   background: transparent;
+//   color: currentColor;
+//   border: none;
+//   outline: none;
+//   padding: 0;
+//   font-weight: 300;
+//   margin: 0;
+//   width: 100%;
+//   max-width: 100%;
+//   vertical-align: bottom;
+//   text-align: inherit;
+// }
