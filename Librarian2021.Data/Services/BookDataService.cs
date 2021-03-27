@@ -52,6 +52,7 @@ namespace Librarian2021.Data.Services
             try
             {
                 var content = await _context.Books
+                    .Include(b => b.Person)
                     .Include(b => b.Author)
                     .OrderBy(b => b.Title)
                     .ToListAsync();

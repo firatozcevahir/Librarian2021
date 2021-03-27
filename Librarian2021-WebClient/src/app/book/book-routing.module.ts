@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from '@app/layout/main-layout/main-layout.component';
 import { BookHomeComponent } from './home/book-home.component';
 import { EditBookComponent } from './edit/edit-book.component';
+import { EditBookHolderComponent } from './edit-holder/edit-book-holder.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ export const BookRouting: IMainRouting = {
   routes: RouterModule.forChild(routes),
   components: [
     BookHomeComponent,
-    EditBookComponent
+    EditBookComponent,
+    EditBookHolderComponent
   ]
 };

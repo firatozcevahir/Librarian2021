@@ -1,0 +1,58 @@
+<mat-dialog-content>
+
+  <form class="main-form" [formGroup]="dataFRM" novalidate autocomplete="off">
+
+    <mat-card>
+      <mat-card-content>
+
+
+        <!-- <mat-form-field appearance="outline">
+          <mat-label>{{'BOOK.FIELDS.HOLDER'|translate}}</mat-label>
+          <mat-select formControlName="authorId" id="authorId">
+            <mat-option *ngFor="let item of personList" [value]="item.id">
+              {{item.name}} {{item.lastName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br /> -->
+
+        <ng-select [items]="personList" bindLabel="name" bindValue="id" formControlName="personId" [multiple]="false"
+          placeholder="{{'BOOK.FIELDS.HOLDER'|translate}}" [searchable]="true" [virtualScroll]="true"
+          [clearable]="true"
+          (change)="handleHolderChange($event?.id)">
+
+          <ng-template ng-label-tmp let-item="item">
+            {{item.name}} {{item.lastName}}
+          </ng-template>
+          <ng-template ng-option-tmp let-item="item" let-index="index">
+            {{item.name}} {{item.lastName}}
+          </ng-template>
+        </ng-select>
+
+
+        <mat-form-field appearance="fill">
+          <mat-label>{{'BOOK.FIELDS.DATE_RANGE'|translate}}</mat-label>
+          <mat-date-range-input [rangePicker]="picker" [min]="minDate">
+            <input matStartDate formControlName="startDate" placeholder="Start date">
+            <input matEndDate formControlName="endDate" placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" [disabled]="!dataFRM.valid || isRequesting" tabindex="1"
+          (click)="saveData()">
+          <mat-icon>save</mat-icon>
+          {{'SYSTEM.RECORD.SAVE' | translate}}
+        </button>
+
+        <button type="button" mat-raised-button color="warn" (click)="onClose()">
+          <mat-icon>clear</mat-icon>
+          {{'SYSTEM.RECORD.CANCEL' | translate}}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</mat-dialog-content>

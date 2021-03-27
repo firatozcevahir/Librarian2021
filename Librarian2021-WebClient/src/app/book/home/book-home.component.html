@@ -24,7 +24,21 @@
     <mat-header-cell *matHeaderCellDef>{{'BOOK.FIELDS.IS_OCCUPIED'|translate}}
     </mat-header-cell>
     <mat-cell *matCellDef="let data">
-      {{data.isOccupied}}
+      <ng-container *ngIf="data.person">
+
+        <div>
+          {{data.person.name}} {{data.person.lastName}}
+          <br />
+          <small>{{data.person.phoneNumber}}</small>
+
+          <br />
+          <ng-container *ngIf="data.startDate && data.endDate">
+            <small [class]="checkIfDateOver(data.endDate)">
+              {{data.startDate | date}} - {{data.endDate | date}}
+            </small>
+          </ng-container>
+        </div>
+      </ng-container>
     </mat-cell>
   </ng-container>
 
@@ -61,8 +75,8 @@
         <mat-icon>create</mat-icon>
       </button>
 
-      <button mat-icon-button (click)="editPerson(data.id)">
-        <mat-icon>create</mat-icon>
+      <button mat-icon-button (click)="editBookHolder(data.id)">
+        <mat-icon>import_export</mat-icon>
       </button>
     </mat-cell>
   </ng-container>

@@ -14,6 +14,7 @@ import { SubSink } from '@app/shared/subsink';
 import { CustomEventService } from '@app/shared/services/custom-event.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditBookComponent } from '@app/book/edit/edit-book.component';
+import { EditBookHolderComponent } from '@app/book/edit-holder/edit-book-holder.component';
 
 @Component({
   selector: 'app-book-home',
@@ -33,6 +34,8 @@ export class BookHomeComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
 
   public bookList: IBookModel[] = [];
+
+  public date = new Date();
 
   constructor(
     private dataService: DataService,
@@ -81,7 +84,7 @@ export class BookHomeComponent implements OnInit, OnDestroy {
     dialogConfig.data = {
       itemId: id,
       editMode: edit
-    }
+    };
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
     this.dialog
@@ -91,8 +94,23 @@ export class BookHomeComponent implements OnInit, OnDestroy {
       });
   }
 
-  public editPerson(id: string): void {
+  public editBookHolder(id: string): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      itemId: id
+    };
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    this.dialog
+      .open(EditBookHolderComponent, dialogConfig)
+      .afterClosed()
+      .subscribe((result) => {
+      });
 
+  }
+
+  public checkIfDateOver(endDate: string): string {
+    return new Date(endDate) < this.date ? 'over-time' : '';
   }
 
 }

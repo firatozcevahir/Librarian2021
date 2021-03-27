@@ -12,9 +12,6 @@ import { PersonRouting } from './person-routing.module';
   declarations: [PersonRouting.components],
   imports: [
     PersonRouting.routes,
-    CommonModule,
-    TranslateModule,
-    ReactiveFormsModule,
     SharedModule
 
   ]

@@ -45,17 +45,18 @@
       "PERSON": "Person",
       "START_DATE": "Start Date",
       "END_DATE": "End Date",
-      "DATE_RANGE": "Date Range"
+      "DATE_RANGE": "Date Range",
+      "HOLDER": "Holder"
     }
   },
   "PERSON": {
     "MENU": "People",
-    "FIELDS":{
+    "FIELDS": {
       "NAME": "Name",
       "LAST_NAME": "Last Name",
       "BOOKS": "Books",
-      "ADDRESS":"Address",
-      "PHONE_NUMBER":"Phone Number"
+      "ADDRESS": "Address",
+      "PHONE_NUMBER": "Phone Number"
     }
 
   },
