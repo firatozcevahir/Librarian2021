@@ -1,1 +1,63 @@
-<p>edit-book works!</p>
+<mat-dialog-content>
+
+  <form class="main-form" [formGroup]="dataFRM" novalidate autocomplete="off">
+
+    <mat-card>
+      <mat-card-content>
+        <mat-form-field appearance="outline">
+          <mat-label>{{'BOOK.FIELDS.TITLE' | translate}}</mat-label>
+          <input matInput type="text" class="form-control" formControlName="title" id="title" required maxlength="64">
+          <mat-error *ngIf="hasError('title', 'required')">{{
+            'SYSTEM.RECORD.VALIDATION.TITLE_REQUIRED'
+            | translate }}
+          </mat-error>
+          <mat-error *ngIf="hasError('title', 'maxlength')">
+            {{ 'SYSTEM.RECORD.VALIDATION.LENGTH_MAX' | translate:{'length':'64'} }}</mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'BOOK.FIELDS.GENRE' | translate}}</mat-label>
+          <input matInput type="text" class="form-control" formControlName="genre" id="genre" required maxlength="40">
+          <mat-error *ngIf="hasError('genre', 'required')">{{
+            'SYSTEM.RECORD.VALIDATION.GENRE_REQUIRED'
+            | translate }}
+          </mat-error>
+          <mat-error *ngIf="hasError('genre', 'maxlength')">
+            {{ 'SYSTEM.RECORD.VALIDATION.LENGTH_MAX' | translate:{'length':'40'} }}</mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'BOOK.FIELDS.AUTHOR'|translate}}</mat-label>
+          <mat-select formControlName="authorId" id="authorId">
+            <mat-option *ngFor="let item of authorList" [value]="item.id">
+              {{item.name}} {{item.lastName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'BOOK.FIELDS.PUBLISH_YEAR'|translate}}</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="publishYear" id="publishYear">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" [disabled]="!dataFRM.valid || isRequesting" tabindex="1"
+          (click)="saveData()">
+          <mat-icon>save</mat-icon>
+          {{'SYSTEM.RECORD.SAVE' | translate}}
+        </button>
+
+        <button type="button" mat-raised-button color="warn" (click)="onClose()">
+          <mat-icon>clear</mat-icon>
+          {{'SYSTEM.RECORD.CANCEL' | translate}}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</mat-dialog-content>

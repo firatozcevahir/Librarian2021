@@ -1,20 +1,13 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '@app/material.module';
-
 import { BookRouting } from './book-routing.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [BookRouting.components],
   imports: [
     BookRouting.routes,
-    CommonModule,
-    TranslateModule,
-    ReactiveFormsModule,
-    MaterialModule
+    SharedModule
   ]
 })
 export class BookModule {

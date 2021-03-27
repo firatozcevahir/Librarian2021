@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Librarian2021.Data.Migrations
 {
     [DbContext(typeof(LibrarianDbContext))]
-    [Migration("20210326091509_InitialDb")]
+    [Migration("20210327065715_InitialDb")]
     partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,9 +20,9 @@ namespace Librarian2021.Data.Migrations
 
             modelBuilder.Entity("Librarian2021.Data.Entities.Author", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
@@ -50,25 +50,35 @@ namespace Librarian2021.Data.Migrations
 
             modelBuilder.Entity("Librarian2021.Data.Entities.Book", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Genre")
-                        .HasMaxLength(40)
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar");
+
+                    b.Property<int?>("PersonId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("PublishYear")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("RecordState")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -82,7 +92,47 @@ namespace Librarian2021.Data.Migrations
 
                     b.HasIndex("AuthorId");
 
+                    b.HasIndex("PersonId");
+
                     b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("Librarian2021.Data.Entities.Person", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar");
+
+                    b.Property<int>("RecordState")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("People");
                 });
 
             modelBuilder.Entity("Librarian2021.Data.Entities.Book", b =>
@@ -93,10 +143,21 @@ namespace Librarian2021.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Librarian2021.Data.Entities.Person", "Person")
+                        .WithMany("Books")
+                        .HasForeignKey("PersonId");
+
                     b.Navigation("Author");
+
+                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("Librarian2021.Data.Entities.Author", b =>
+                {
+                    b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("Librarian2021.Data.Entities.Person", b =>
                 {
                     b.Navigation("Books");
                 });

@@ -12,10 +12,10 @@ const routes: Routes = [
       {
         path: '',
         component: BookHomeComponent,
-        children: [
-          { path: 'add', component: EditBookComponent },
-          { path: 'edit/:id', component: EditBookComponent }
-        ]
+        // children: [
+        //   { path: 'add', component: EditBookComponent },
+        //   { path: 'edit/:id', component: EditBookComponent }
+        // ]
       },
       { path: '**', redirectTo: '' }
     ]

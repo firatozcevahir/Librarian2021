@@ -1,1 +1,81 @@
-<p>book-home works!</p>
+<mat-progress-bar mode="query" *ngIf="isRequesting"></mat-progress-bar>
+
+
+<mat-table #table [dataSource]="dataSource" matSort>
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef>{{'BOOK.FIELDS.TITLE'|translate}}
+    </mat-header-cell>
+    <mat-cell *matCellDef="let data">
+      {{data.title}}
+      <small>({{data.genre}})</small>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="author">
+    <mat-header-cell *matHeaderCellDef>{{'BOOK.FIELDS.AUTHOR'|translate}}
+    </mat-header-cell>
+    <mat-cell *matCellDef="let data">
+      {{data.author.name}} {{data.author.lastName}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="occupied">
+    <mat-header-cell *matHeaderCellDef>{{'BOOK.FIELDS.IS_OCCUPIED'|translate}}
+    </mat-header-cell>
+    <mat-cell *matCellDef="let data">
+      {{data.isOccupied}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="person">
+    <mat-header-cell *matHeaderCellDef>{{'BOOK.FIELDS.PUBLISH_YEAR'|translate}}
+    </mat-header-cell>
+    <mat-cell *matCellDef="let data">
+      {{data.publishYear | date}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="recordState">
+    <mat-header-cell *matHeaderCellDef>{{'SYSTEM.RECORD.RECORD_STATE'|translate}}
+    </mat-header-cell>
+    <mat-cell *matCellDef="let data">
+      {{data.recordState}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="updatedAt">
+    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-md>
+      {{'SYSTEM.RECORD.UPDATED_ON'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let data" fxHide fxShow.gt-md>
+      {{data.updatedAt | timeAgo }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'SYSTEM.RECORD.ACTIONS'|translate}}
+    </mat-header-cell>
+    <mat-cell *matCellDef="let data">
+
+      <button mat-icon-button (click)="editBook(data.id, true)">
+        <mat-icon>create</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="editPerson(data.id)">
+        <mat-icon>create</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+  <mat-row *matRowDef="let data; columns: displayedColumns;"></mat-row>
+  <mat-row *matNoDataRow>
+
+  </mat-row>
+</mat-table>
+
+
+<button mat-fab class="fab-add-button" color="primary" (click)="editBook()">
+  <mat-icon>add</mat-icon>
+</button>

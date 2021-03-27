@@ -15,6 +15,8 @@ namespace Librarian2021.Data.Entities
         [Required]
         public DateTime PublishYear { get; set; }
 
+        [Required]
+        [Column(TypeName = "varchar")]
         [MaxLength(40)]
         public string Genre { get; set; }
         public DateTime? StartDate { get; set; }
@@ -29,12 +31,12 @@ namespace Librarian2021.Data.Entities
             }
         }
 
-        public Guid AuthorId { get; set; }
+        public int AuthorId { get; set; }
 
         [ForeignKey(nameof(AuthorId))]
         public virtual Author Author { get; set; }
 
-        public Guid? PersonId { get; set; }
+        public int? PersonId { get; set; }
 
         [ForeignKey(nameof(PersonId))]
         public virtual Person Person { get; set; }

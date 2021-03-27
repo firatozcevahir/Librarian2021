@@ -12,10 +12,11 @@ namespace Librarian2021.Data.Services
     public interface IBookDataService
     {
         Task<List<Book>> GetBooks();
-        Task<Book> GetBookById(Guid id);
+        Task<Book> GetBookById(int id);
         Task<int> AddBook(Book book);
         Task<int> UpdateBook(Book book);
-        Task<int> DeleteBook(Guid id);
+        Task<int> UpdateBookHolder(Book book);
+        Task<int> DeleteBook(int id);
     }
     public class BookDataService : IBookDataService
     {
@@ -27,7 +28,7 @@ namespace Librarian2021.Data.Services
             _context = context;
         }
 
-        public async Task<Book> GetBookById(Guid id)
+        public async Task<Book> GetBookById(int id)
         {
             if (!EntityExists(id))
             {
@@ -50,31 +51,65 @@ namespace Librarian2021.Data.Services
         {
             try
             {
-                var content = await _context.Books.ToListAsync();
+                var content = await _context.Books
+                    .Include(b => b.Author)
+                    .OrderBy(b => b.Title)
+                    .ToListAsync();
                 return content;
             }
             catch (Exception ex)
             {
                 throw;
             }
-        }       
+        }
 
-        public Task<int> AddBook(Book book)
+        public async Task<int> AddBook(Book book)
+        {
+            try
+            {
+                _context.Add(book);
+                return await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<int> UpdateBook(Book book)
+        {
+            try
+            {
+                _context.Update(book);
+                return await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<int> UpdateBookHolder(Book book)
+        {
+            try
+            {
+                _context.Update(book);
+                return await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public Task<int> DeleteBook(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> UpdateBook(Book book)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> DeleteBook(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        private bool EntityExists(Guid id)
+        private bool EntityExists(int id)
         {
             return _context.Books.Any(e => e.Id == id);
         }

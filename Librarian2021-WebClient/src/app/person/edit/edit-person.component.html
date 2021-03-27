@@ -1,1 +1,61 @@
-<p>edit-person works!</p>
+<mat-dialog-content>
+
+  <form class="main-form" [formGroup]="dataFRM" novalidate autocomplete="off">
+
+    <mat-card>
+      <mat-card-content>
+        <mat-form-field appearance="outline">
+          <mat-label>{{'PERSON.FIELDS.NAME' | translate}}</mat-label>
+          <input matInput type="text" class="form-control" formControlName="name" id="name" required maxlength="64">
+          <mat-error *ngIf="hasError('name', 'required')">
+            {{  'SYSTEM.RECORD.VALIDATION.NAME_REQUIRED' | translate }}
+          </mat-error>
+          <mat-error *ngIf="hasError('name', 'maxlength')">
+            {{ 'SYSTEM.RECORD.VALIDATION.LENGTH_MAX' | translate:{'length':'64'} }}</mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'PERSON.FIELDS.LAST_NAME' | translate}}</mat-label>
+          <input matInput type="text" class="form-control" formControlName="lastName" id="lastName" required maxlength="64">
+          <mat-error *ngIf="hasError('lastName', 'required')">
+            {{  'SYSTEM.RECORD.VALIDATION.LAST_NAME_REQUIRED' | translate }}
+          </mat-error>
+          <mat-error *ngIf="hasError('lastName', 'maxlength')">
+            {{ 'SYSTEM.RECORD.VALIDATION.LENGTH_MAX' | translate:{'length':'64'} }}</mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'PERSON.FIELDS.PHONE_NUMBER' | translate}}</mat-label>
+          <input matInput type="text" class="form-control" formControlName="phoneNumber" id="phoneNumber" required maxlength="64">
+          <mat-error *ngIf="hasError('phoneNumber', 'required')">
+            {{  'SYSTEM.RECORD.VALIDATION.PHONE_NUMBER_REQUIRED' | translate }}
+          </mat-error>
+          <mat-error *ngIf="hasError('phoneNumber', 'maxlength')">
+            {{ 'SYSTEM.RECORD.VALIDATION.LENGTH_MAX' | translate:{'length':'64'} }}</mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'PERSON.FIELDS.ADDRESS' | translate}}</mat-label>
+          <input matInput type="text" class="form-control" formControlName="address" id="address">
+        </mat-form-field>
+        <br />
+
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" [disabled]="!dataFRM.valid || isRequesting" tabindex="1"
+          (click)="saveData()">
+          <mat-icon>save</mat-icon>
+          {{'SYSTEM.RECORD.SAVE' | translate}}
+        </button>
+
+        <button type="button" mat-raised-button color="warn" (click)="onClose()">
+          <mat-icon>clear</mat-icon>
+          {{'SYSTEM.RECORD.CANCEL' | translate}}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</mat-dialog-content>

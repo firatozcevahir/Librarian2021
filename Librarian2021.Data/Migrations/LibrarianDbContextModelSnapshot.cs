@@ -18,9 +18,9 @@ namespace Librarian2021.Data.Migrations
 
             modelBuilder.Entity("Librarian2021.Data.Entities.Author", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
@@ -48,12 +48,12 @@ namespace Librarian2021.Data.Migrations
 
             modelBuilder.Entity("Librarian2021.Data.Entities.Book", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
@@ -62,11 +62,12 @@ namespace Librarian2021.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Genre")
+                        .IsRequired()
                         .HasMaxLength(40)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar");
 
-                    b.Property<Guid?>("PersonId")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("PersonId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("PublishYear")
                         .HasColumnType("TEXT");
@@ -96,9 +97,9 @@ namespace Librarian2021.Data.Migrations
 
             modelBuilder.Entity("Librarian2021.Data.Entities.Person", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Address")
                         .HasColumnType("TEXT");

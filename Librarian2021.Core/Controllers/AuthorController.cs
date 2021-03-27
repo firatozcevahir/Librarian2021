@@ -44,7 +44,7 @@ namespace Librarian2021.Core.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetAuthorById(Guid id)
+        public async Task<IActionResult> GetAuthorById(int id)
         {
             var result = await _service.GetAuthorById(id);
 
@@ -108,7 +108,7 @@ namespace Librarian2021.Core.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(int id)
         {
             var result = await _service.DeleteAuthor(id);
             if (result > 0)

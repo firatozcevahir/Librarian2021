@@ -13,10 +13,10 @@ namespace Librarian2021.Data.Services
     {
         Task<List<Author>> GetAuthors();
         Task<List<Author>> GetAuthorsWithBooks();
-        Task<Author> GetAuthorById(Guid id);
+        Task<Author> GetAuthorById(int id);
         Task<int> AddAuthor(Author author);
         Task<int> UpdateAuthor(Author author);
-        Task<int> DeleteAuthor(Guid id);
+        Task<int> DeleteAuthor(int id);
     }
     public class AuthorDataService : IAuthorDataService
     {
@@ -28,7 +28,7 @@ namespace Librarian2021.Data.Services
             _context = context;
         }
 
-        public async Task<Author> GetAuthorById(Guid id)
+        public async Task<Author> GetAuthorById(int id)
         {
             if (!EntityExists(id))
             {
@@ -52,7 +52,10 @@ namespace Librarian2021.Data.Services
         {
             try
             {
-                var content = await _context.Authors.ToListAsync();
+                var content = await _context.Authors
+                    .Include(a => a.Books)
+                    .OrderBy(a => a.Name)
+                    .ToListAsync();
                 return content;
             }
             catch (Exception ex)
@@ -76,21 +79,39 @@ namespace Librarian2021.Data.Services
             }
         }
 
-        public Task<int> AddAuthor(Author author)
+        public async Task<int> AddAuthor(Author author)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Add(author);
+                return await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
-        public Task<int> UpdateAuthor(Author author)
+        public async Task<int> UpdateAuthor(Author author)
+        {
+            try
+            {
+                _context.Update(author);
+                return await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public Task<int> DeleteAuthor(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> DeleteAuthor(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        private bool EntityExists(Guid id)
+        private bool EntityExists(int id)
         {
             return _context.Authors.Any(e => e.Id == id);
         }

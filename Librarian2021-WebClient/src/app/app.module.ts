@@ -15,6 +15,7 @@ import {
 
 import { LayoutModule } from './layout/layout.module';
 
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }

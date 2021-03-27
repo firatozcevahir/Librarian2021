@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@app/material.module';
 
 import { AuthorRouting } from './author-routing.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [AuthorRouting.components],
@@ -14,7 +15,7 @@ import { AuthorRouting } from './author-routing.module';
     CommonModule,
     TranslateModule,
     ReactiveFormsModule,
-    MaterialModule
+    SharedModule
   ]
 })
 export class AuthorModule {

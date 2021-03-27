@@ -4,5 +4,5 @@ import { IBookModel } from "./book.model";
 export interface IAuthorModel extends IBaseModel{
   name: string;
   lastName: string;
-  books?: IBookModel[];
+  books: IBookModel[];
 }

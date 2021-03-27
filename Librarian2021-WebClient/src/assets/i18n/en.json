@@ -1,5 +1,70 @@
 {
   "SYSTEM": {
-    "APP_NAME":"Librarian v1"
+    "APP_NAME": "Librarian v1",
+    "RECORD": {
+      "ACTIONS": "Actions",
+      "ADD": "Add",
+      "CREATED_ON": "Created On",
+      "UPDATED_ON": "Updated On",
+      "RECORD_STATE": "Record State",
+      "SAVE": "Save",
+      "CANCEL": "Cancel",
+      "VALIDATION": {
+        "NAME_REQUIRED": "Name is required",
+        "LAST_NAME_REQUIRED": "Last Name is required",
+        "PHONE_NUMBER_REQUIRED": "Phone Number is required",
+        "TITLE_REQUIRED": "Title is required",
+        "GENRE_REQUIRED": "Genre is required",
+        "LENGTH_MAX": "Not more than {{length}} characters long.",
+        "LENGTH_MIN": "You must enter at least {{length}} characters.",
+        "MORE_THAN_LENGTH": "You have more than {{length}} characters."
+      }
+    }
+  },
+  "TIME_AGO": {
+    "SEC_45": "a few seconds ago",
+    "SEC_90": "a minute ago",
+    "MIN_45": " minutes ago",
+    "MIN_90": " an hour ago",
+    "HR_22": " hours ago",
+    "HR_36": "a day ago",
+    "DAY_25": " days ago",
+    "DAY_45": "a month ago",
+    "DAY_345": " months ago",
+    "DAY_545": "a year ago",
+    "YEAR": " years ago"
+  },
+  "BOOK": {
+    "MENU": "Books",
+    "FIELDS": {
+      "TITLE": "Title",
+      "AUTHOR": "Author",
+      "PUBLISH_YEAR": "Publish Year",
+      "GENRE": "Genre",
+      "IS_OCCUPIED": "Occupied",
+      "PERSON": "Person",
+      "START_DATE": "Start Date",
+      "END_DATE": "End Date",
+      "DATE_RANGE": "Date Range"
+    }
+  },
+  "PERSON": {
+    "MENU": "People",
+    "FIELDS":{
+      "NAME": "Name",
+      "LAST_NAME": "Last Name",
+      "BOOKS": "Books",
+      "ADDRESS":"Address",
+      "PHONE_NUMBER":"Phone Number"
+    }
+
+  },
+  "AUTHOR": {
+    "MENU": "Authors",
+    "FIELDS": {
+      "NAME": "Name",
+      "LAST_NAME": "Last Name",
+      "BOOKS": "Books"
+    }
   }
 }

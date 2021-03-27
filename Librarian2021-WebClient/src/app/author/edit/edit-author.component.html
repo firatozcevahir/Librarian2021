@@ -1,1 +1,44 @@
-<p>edit-author works!</p>
+<mat-dialog-content>
+
+  <form class="main-form" [formGroup]="dataFRM" novalidate autocomplete="off">
+
+    <mat-card>
+      <mat-card-content>
+        <mat-form-field appearance="outline">
+          <mat-label>{{'AUTHOR.FIELDS.NAME' | translate}}</mat-label>
+          <input matInput type="text" class="form-control" formControlName="name" id="name" required maxlength="64">
+          <mat-error *ngIf="hasError('name', 'required')">
+            {{  'SYSTEM.RECORD.VALIDATION.NAME_REQUIRED' | translate }}
+          </mat-error>
+          <mat-error *ngIf="hasError('name', 'maxlength')">
+            {{ 'SYSTEM.RECORD.VALIDATION.LENGTH_MAX' | translate:{'length':'64'} }}</mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'AUTHOR.FIELDS.LAST_NAME' | translate}}</mat-label>
+          <input matInput type="text" class="form-control" formControlName="lastName" id="lastName" required maxlength="64">
+          <mat-error *ngIf="hasError('lastName', 'required')">
+            {{  'SYSTEM.RECORD.VALIDATION.LAST_NAME_REQUIRED' | translate }}
+          </mat-error>
+          <mat-error *ngIf="hasError('lastName', 'maxlength')">
+            {{ 'SYSTEM.RECORD.VALIDATION.LENGTH_MAX' | translate:{'length':'64'} }}</mat-error>
+        </mat-form-field>
+        <br />
+
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" [disabled]="!dataFRM.valid || isRequesting" tabindex="1"
+          (click)="saveData()">
+          <mat-icon>save</mat-icon>
+          {{'SYSTEM.RECORD.SAVE' | translate}}
+        </button>
+
+        <button type="button" mat-raised-button color="warn" (click)="onClose()">
+          <mat-icon>clear</mat-icon>
+          {{'SYSTEM.RECORD.CANCEL' | translate}}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</mat-dialog-content>

@@ -12,10 +12,10 @@ namespace Librarian2021.Data.Services
     public interface IPersonDataService
     {
         Task<List<Person>> GetPeople();
-        Task<Person> GetPersonById(Guid id);
+        Task<Person> GetPersonById(int id);
         Task<int> AddPerson(Person person);
         Task<int> UpdatePerson(Person person);
-        Task<int> DeletePerson(Guid id);
+        Task<int> DeletePerson(int id);
     }
     public class PersonDataService : IPersonDataService
     {
@@ -27,7 +27,7 @@ namespace Librarian2021.Data.Services
             _context = context;
         }
 
-        public async Task<Person> GetPersonById(Guid id)
+        public async Task<Person> GetPersonById(int id)
         {
             if (!EntityExists(id))
             {
@@ -50,7 +50,9 @@ namespace Librarian2021.Data.Services
         {
             try
             {
-                var content = await _context.People.ToListAsync();
+                var content = await _context.People
+                    .Include(p => p.Books)
+                    .ToListAsync();
                 return content;
             }
             catch (Exception ex)
@@ -59,22 +61,40 @@ namespace Librarian2021.Data.Services
             }
         }
 
-        public Task<int> AddPerson(Person person)
+        public async Task<int> AddPerson(Person person)
+        {
+            try
+            {
+                _context.Add(person);
+                return await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<int> UpdatePerson(Person person)
+        {
+            try
+            {
+                _context.Update(person);
+                return await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public Task<int> DeletePerson(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> UpdatePerson(Person person)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> DeletePerson(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        private bool EntityExists(Guid id)
+        private bool EntityExists(int id)
         {
             return _context.People.Any(e => e.Id == id);
         }

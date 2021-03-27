@@ -4,7 +4,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '@app/material.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 import { PersonRouting } from './person-routing.module';
 
@@ -15,7 +15,8 @@ import { PersonRouting } from './person-routing.module';
     CommonModule,
     TranslateModule,
     ReactiveFormsModule,
-    MaterialModule
+    SharedModule
+
   ]
 })
 export class PersonModule {

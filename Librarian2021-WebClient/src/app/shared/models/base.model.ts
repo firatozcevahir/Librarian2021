@@ -1,5 +1,5 @@
 export interface IBaseModel {
-  id: string;
+  id: number;
   createdAt: Date;
   updatedAt: Date;
   recordState: RecordState;

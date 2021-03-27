@@ -23,10 +23,10 @@ namespace Librarian2021.Data.Contexts
         {
             base.OnConfiguring(optionsBuilder);
 
-            //if (!optionsBuilder.IsConfigured)
-            //{
-            //    optionsBuilder.UseSqlite("Data Source=librariandb2021.db");
-            //}
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite("Data Source=librariandb2021.db");
+            }
 
         }
 

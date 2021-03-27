@@ -5,17 +5,17 @@
     <ul fxLayout="row" fxLayoutGap="20px">
       <li>
         <button mat-button [color]="isActive('/book') ? 'primary': ''" routerLink="/book">
-          <mat-icon>book</mat-icon> Books
+          <mat-icon>book</mat-icon> {{'BOOK.MENU' | translate}}
         </button>
       </li>
       <li>
         <button mat-button [color]="isActive('/author') ? 'primary': ''" routerLink="/author">
-          <mat-icon>local_library</mat-icon> Authors
+          <mat-icon>local_library</mat-icon>  {{'AUTHOR.MENU' | translate}}
         </button>
       </li>
       <li>
         <button mat-button [color]="isActive('/person') ? 'primary': ''" routerLink="/person">
-          <mat-icon>person</mat-icon> People
+          <mat-icon>person</mat-icon>  {{'PERSON.MENU' | translate}}
         </button>
       </li>
     </ul>

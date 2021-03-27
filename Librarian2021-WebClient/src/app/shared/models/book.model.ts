@@ -6,10 +6,11 @@ export interface IBookModel extends IBaseModel {
   title: string;
   publishYear: Date;
   genre: string;
-  startDate?: Date;
-  endDate?: Date;
+  startDate: Date;
+  endDate: Date;
   isOccupied: boolean;
-  personId?: string;
-  person?: IPersonModel;
+  personId: number;
+  person: IPersonModel;
   author: IAuthorModel;
+  authorId: number;
 }

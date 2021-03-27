@@ -11,7 +11,8 @@ namespace Librarian2021.Data.Migrations
                 name: "Authors",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "varchar", maxLength: 64, nullable: false),
                     LastName = table.Column<string>(type: "varchar", maxLength: 64, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
@@ -24,14 +25,37 @@ namespace Librarian2021.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "People",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "varchar", maxLength: 64, nullable: false),
+                    LastName = table.Column<string>(type: "varchar", maxLength: 64, nullable: false),
+                    Address = table.Column<string>(type: "TEXT", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "varchar", maxLength: 64, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    RecordState = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_People", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Books",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "varchar", maxLength: 64, nullable: false),
                     PublishYear = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Genre = table.Column<string>(type: "TEXT", maxLength: 40, nullable: true),
-                    AuthorId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Genre = table.Column<string>(type: "varchar", maxLength: 40, nullable: false),
+                    StartDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    EndDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    AuthorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    PersonId = table.Column<int>(type: "INTEGER", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     RecordState = table.Column<int>(type: "INTEGER", nullable: false)
@@ -45,12 +69,23 @@ namespace Librarian2021.Data.Migrations
                         principalTable: "Authors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Books_People_PersonId",
+                        column: x => x.PersonId,
+                        principalTable: "People",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_AuthorId",
                 table: "Books",
                 column: "AuthorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Books_PersonId",
+                table: "Books",
+                column: "PersonId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -60,6 +95,9 @@ namespace Librarian2021.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Authors");
+
+            migrationBuilder.DropTable(
+                name: "People");
         }
     }
 }
