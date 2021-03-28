@@ -2,70 +2,81 @@
   "SYSTEM": {
     "APP_NAME": "Librarian v1",
     "RECORD": {
-      "ACTIONS": "Actions",
-      "ADD": "Add",
-      "CREATED_ON": "Created On",
-      "UPDATED_ON": "Updated On",
-      "RECORD_STATE": "Record State",
-      "SAVE": "Save",
-      "CANCEL": "Cancel",
+      "ACTIONS": "İşlemler",
+      "ADD": "Ekle",
+      "CREATED_ON": "Oluşturma",
+      "UPDATED_ON": "Güncelleme",
+      "RECORD_STATE": "Durum",
+      "SAVE": "Kaydet",
+      "CANCEL": "İptal",
+      "SEARCH": "Ara",
       "VALIDATION": {
-        "NAME_REQUIRED": "Name is required",
-        "LAST_NAME_REQUIRED": "Last Name is required",
-        "PHONE_NUMBER_REQUIRED": "Phone Number is required",
-        "TITLE_REQUIRED": "Title is required",
-        "GENRE_REQUIRED": "Genre is required",
-        "LENGTH_MAX": "Not more than {{length}} characters long.",
-        "LENGTH_MIN": "You must enter at least {{length}} characters.",
-        "MORE_THAN_LENGTH": "You have more than {{length}} characters."
+        "NAME_REQUIRED": "Ad Gerekli",
+        "LAST_NAME_REQUIRED": "Soyad Gerekli",
+        "PHONE_NUMBER_REQUIRED": "Telefon Numarası Gerekli",
+        "TITLE_REQUIRED": "Başlık Gerkeli",
+        "GENRE_REQUIRED": "Tür Gerekli",
+        "LENGTH_MAX": "{{length}} karakterden fazla olamaz",
+        "LENGTH_MIN": "En az {{length}} karakter girmelisiniz"
       }
+    },
+    "LANGUAGES": {
+      "EN": "İngilizce",
+      "TR": "Türkçe"
     }
   },
   "TIME_AGO": {
-    "SEC_45": "a few seconds ago",
-    "SEC_90": "a minute ago",
-    "MIN_45": " minutes ago",
-    "MIN_90": " an hour ago",
-    "HR_22": " hours ago",
-    "HR_36": "a day ago",
-    "DAY_25": " days ago",
-    "DAY_45": "a month ago",
-    "DAY_345": " months ago",
-    "DAY_545": "a year ago",
-    "YEAR": " years ago"
+    "SEC_45": "birkaç saniye önce",
+    "SEC_90": "bir dakike önce",
+    "MIN_45": " dakika önce",
+    "MIN_90": "bir saat önce",
+    "HR_22": " saat önce",
+    "HR_36": "bir gün önce",
+    "DAY_25": " gün önce",
+    "DAY_45": "bir ay önce",
+    "DAY_345": " aylar önce",
+    "DAY_545": "bir yıl önce",
+    "YEAR": " yıl önce"
   },
   "BOOK": {
-    "MENU": "Books",
+    "MENU": "Kitaplar",
+    "EDIT": "Kitabı Düzenle",
+    "EDIT_HOLDER": "Kitabı Alanı Düzenle",
+    "ADD": "Kitap Ekle",
     "FIELDS": {
-      "TITLE": "Title",
-      "AUTHOR": "Author",
-      "PUBLISH_YEAR": "Publish Year",
-      "GENRE": "Genre",
-      "IS_OCCUPIED": "Occupied",
-      "PERSON": "Person",
-      "START_DATE": "Start Date",
-      "END_DATE": "End Date",
-      "DATE_RANGE": "Date Range",
-      "HOLDER": "Holder"
+      "TITLE": "Başlık",
+      "AUTHOR": "Yazar",
+      "PUBLISH_YEAR": "Yayınlanma Tarihi",
+      "GENRE": "Tür",
+      "IS_OCCUPIED": "Alan",
+      "PERSON": "Kişi",
+      "START_DATE": "Başlangıç Tarihi",
+      "END_DATE": "Bitiş Tarihi",
+      "DATE_RANGE": "Tarih Aralığı",
+      "HOLDER": "Alan Kişi"
     }
   },
   "PERSON": {
-    "MENU": "People",
+    "MENU": "Kişiler",
+    "EDIT": "Kişiyi Düzenle",
+    "ADD": "Kişi Ekle",
     "FIELDS": {
-      "NAME": "Name",
-      "LAST_NAME": "Last Name",
-      "BOOKS": "Books",
-      "ADDRESS": "Address",
-      "PHONE_NUMBER": "Phone Number"
+      "NAME": "Ad",
+      "LAST_NAME": "Soyad",
+      "BOOKS": "Kitaplar",
+      "ADDRESS": "Adres",
+      "PHONE_NUMBER": "Telefon Numarası"
     }
 
   },
   "AUTHOR": {
-    "MENU": "Authors",
+    "MENU": "Yazarlar",
+    "EDIT": "Yazarı Düzenle",
+    "ADD": "Yazar Ekle",
     "FIELDS": {
-      "NAME": "Name",
-      "LAST_NAME": "Last Name",
-      "BOOKS": "Books"
+      "NAME": "Ad",
+      "LAST_NAME": "Soyad",
+      "BOOKS": "Kitaplar"
     }
   }
 }

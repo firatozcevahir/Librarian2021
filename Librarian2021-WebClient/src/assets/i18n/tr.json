@@ -18,6 +18,11 @@
         "GENRE_REQUIRED": "Tür Gerekli",
         "LENGTH_MAX": "{{length}} karakterden fazla olamaz",
         "LENGTH_MIN": "En az {{length}} karakter girmelisiniz"
+      },
+      "STATUS": {
+        "ACTIVE": "Aktif",
+        "PASSIVE": "Pasif",
+        "DELETED": "Silinmiş"
       }
     },
     "LANGUAGES": {
@@ -67,7 +72,6 @@
       "ADDRESS": "Adres",
       "PHONE_NUMBER": "Telefon Numarası"
     }
-
   },
   "AUTHOR": {
     "MENU": "Yazarlar",

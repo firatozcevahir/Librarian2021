@@ -18,6 +18,11 @@
         "GENRE_REQUIRED": "Genre is required",
         "LENGTH_MAX": "Not more than {{length}} characters long.",
         "LENGTH_MIN": "You must enter at least {{length}} characters."
+      },
+      "STATUS": {
+        "ACTIVE": "Active",
+        "PASSIVE": "Passive",
+        "DELETED": "Deleted"
       }
     },
     "LANGUAGES": {
@@ -67,7 +72,6 @@
       "ADDRESS": "Address",
       "PHONE_NUMBER": "Phone Number"
     }
-
   },
   "AUTHOR": {
     "MENU": "Authors",

@@ -21,12 +21,14 @@ import { EditBookHolderComponent } from '@app/book/edit-holder/edit-book-holder.
   templateUrl: './book-home.component.html',
   styleUrls: ['./book-home.component.scss']
 })
+
 export class BookHomeComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   public dataSource = new MatTableDataSource<IBookModel>();
+
 
   public isRequesting = false;
   public displayedColumns: string[] = ['title', 'author', 'occupied', 'person', 'recordState', 'updatedAt', 'id'];

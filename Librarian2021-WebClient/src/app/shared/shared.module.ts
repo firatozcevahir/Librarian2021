@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@app/material.module';
 import { MatIconModule } from '@angular/material/icon';
-import { TimeAgoPipe } from './pipes/index';
+import { TimeAgoPipe, GlobalEnumPipe } from './pipes/index';
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { DialogWidgetComponent } from './components/dialog-widget/dialog-widget.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
@@ -14,6 +14,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 @NgModule({
   declarations: [
     TimeAgoPipe,
+    GlobalEnumPipe,
     TooltipComponent,
     DialogWidgetComponent,
     SearchBarComponent
@@ -30,6 +31,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
   exports: [
     MaterialModule,
     TimeAgoPipe,
+    GlobalEnumPipe,
     TranslateModule,
     CommonModule,
     FormsModule,

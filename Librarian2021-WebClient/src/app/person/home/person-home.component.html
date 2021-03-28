@@ -41,7 +41,7 @@
     <mat-header-cell *matHeaderCellDef>{{'SYSTEM.RECORD.RECORD_STATE'|translate}}
     </mat-header-cell>
     <mat-cell *matCellDef="let data">
-      {{data.recordState}}
+      {{data.recordState | enumpipe | translate}}
     </mat-cell>
   </ng-container>
 
